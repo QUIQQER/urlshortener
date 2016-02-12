@@ -41,7 +41,8 @@ class Shortener
         if (empty($url)) {
             return;
         }
-
+        echo $url;
+        exit;
         $result = QUI::getDataBase()->fetch(array(
             'from' => self::getDataBaseTableName(),
             'where' => array(
