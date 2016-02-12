@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <global>
+        <table name="urlshortener">
+            <field type="BIGINT(20)">id</field>
+            <field type="VARCHAR(10)">shortened</field>
+            <field type="TEXT">url</field>
+
+            <primary>id</primary>
+            <auto_increment>id</auto_increment>
+        </table>
+    </global>
+</database>
