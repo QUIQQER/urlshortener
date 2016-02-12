@@ -79,7 +79,7 @@ class Shortener
             )
         );
 
-        return HOST . URL_DIR . $random;
+        return rtrim(HOST, '/') . URL_DIR . $random;
     }
 
     /**
