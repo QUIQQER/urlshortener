@@ -53,6 +53,12 @@ class Shortener
             return;
         }
 
+        if (class_exists('QUI\Piwik\Piwik')) {
+            $Project = $Rewrite->getProject();
+            $Piwik   = QUI\Piwik\Piwik::getPiwikClient($Project);
+            $Piwik->doTrackPageView($url);
+        }
+
         $Redirect = new RedirectResponse($result[0]['url']);
         $Redirect->setStatusCode(Response::HTTP_SEE_OTHER);
 
