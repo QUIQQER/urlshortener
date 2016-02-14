@@ -76,12 +76,12 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                     header   : QUILocale.get(lg, 'grid.title.shortened'),
                     dataIndex: 'shortened',
                     dataType : 'string',
-                    width    : 200
+                    width    : 120
                 }, {
                     header   : QUILocale.get(lg, 'grid.title.url'),
                     dataIndex: 'url',
                     dataType : 'string',
-                    width    : 400
+                    width    : 800
                 }]
             });
 
