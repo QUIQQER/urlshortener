@@ -54,8 +54,12 @@ class Shortener
         }
 
         if (class_exists('QUI\Piwik\Piwik')) {
+            QUI\System\Log::writeRecursive(123);
+
             $Project = $Rewrite->getProject();
             $Piwik   = QUI\Piwik\Piwik::getPiwikClient($Project);
+
+            $Piwik->setIp(QUI\Utils\System::getClientIP());
             $Piwik->doTrackPageView($url);
         }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <item parent="/extras/"
+          name="urlshortener"
+          require="package/quiqqer/urlshortener/bin/controls/Panel"
+          icon="fa fa-chain-broken"
+    >
+        <locale group="quiqqer/urlshortener" var="menu.urlshortener.title"/>
+    </item>
+</menu>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locales>
+    <groups name="quiqqer/urlshortener" datatype="php,js">
+
+        <locale name="menu.urlshortener.title">
+            <de><![CDATA[URL-Shortener]]></de>
+            <en><![CDATA[URL-Shortener]]></en>
+        </locale>
+
+
+    </groups>
+
+    <groups name="quiqqer/urlshortener" datatype="js">
+
+        <locale name="grid.title.url">
+            <de><![CDATA[Weiterleitung zu]]></de>
+            <en><![CDATA[Forwarding to]]></en>
+        </locale>
+        <locale name="grid.title.shortend">
+            <de><![CDATA[Kurz-URL]]></de>
+            <en><![CDATA[Shortend URL]]></en>
+        </locale>
+
+    </groups>
+</locales>
