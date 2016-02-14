@@ -12,7 +12,7 @@ Paketname:
 Features (Funktionen)
 --------
 
-- Macht lange URLs zu kurzen und leitet diese Weiter.
+- Macht lange URLs zu kurzen und leitet diese weiter.
 
 Installation
 ------------
@@ -41,3 +41,10 @@ MIT
 
 Entwickler
 --------
+
+```php
+<?php
+
+$Shortener = new QUI\Url\Shortener();
+$shortend  = $Shortener->addUrl($article['url']);
+```
