@@ -16,7 +16,7 @@
             <de><![CDATA[Weiterleitung zu]]></de>
             <en><![CDATA[Forwarding to]]></en>
         </locale>
-        <locale name="grid.title.shortend">
+        <locale name="grid.title.shortened">
             <de><![CDATA[Kurz-URL]]></de>
             <en><![CDATA[Shortend URL]]></en>
         </locale>
