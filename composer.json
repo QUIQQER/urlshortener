@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "QUI\\Url": "src/QUI/Url"
+      "QUI\\Url\\": "src/QUI/Url"
     }
   }
 }
