@@ -29,7 +29,10 @@ class Handler extends QUI\CRUD\Factory
     {
         return array(
             'shortened',
-            'url'
+            'url',
+            'title',
+            'description',
+            'params'
         );
     }
 

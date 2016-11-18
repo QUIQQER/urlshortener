@@ -43,7 +43,7 @@ class Shortener
         }
 
         $result = QUI::getDataBase()->fetch(array(
-            'from' => self::getDataBaseTableName(),
+            'from'  => self::getDataBaseTableName(),
             'where' => array(
                 'shortened' => $url
             )
@@ -61,7 +61,19 @@ class Shortener
             $Piwik->doTrackPageView($url);
         }
 
-        $Redirect = new RedirectResponse($result[0]['url']);
+        // nexgam switch
+        $url = parse_url($result[0]['url']);
+        parse_str($url['query'], $query);
+
+        $query['customid'] = '5337485606';
+        $query['campid']   = 5337485606;
+
+        $url['query'] = http_build_query($query);
+
+        $_url = 'http://' . $url['host'] . $url['path'] . '?' . $url['query'];
+
+        //$Redirect = new RedirectResponse($result[0]['url']);
+        $Redirect = new RedirectResponse($_url);
         $Redirect->setStatusCode(Response::HTTP_SEE_OTHER);
 
         echo $Redirect->getContent();
@@ -83,7 +95,7 @@ class Shortener
             $this->getDataBaseTableName(),
             array(
                 'shortened' => $random,
-                'url' => $url
+                'url'       => $url
             )
         );
 
@@ -104,7 +116,7 @@ class Shortener
         );
 
         $result = QUI::getDataBase()->fetch(array(
-            'from' => $this->getDataBaseTableName(),
+            'from'  => $this->getDataBaseTableName(),
             'where' => array(
                 'shortened' => $random
             )
