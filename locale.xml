@@ -7,7 +7,15 @@
             <en><![CDATA[URL-Shortener]]></en>
         </locale>
 
+        <locale name="package.title">
+            <de><![CDATA[QUIQQER - URL-Shortener]]></de>
+            <en><![CDATA[QUIQQER - URL-Shortener]]></en>
+        </locale>
 
+        <locale name="package.description">
+            <de><![CDATA[URL und Link Shortener für QUIQQER.]]></de>
+            <en><![CDATA[URL and Link Shortener for QUIQQER.]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/urlshortener" datatype="js">

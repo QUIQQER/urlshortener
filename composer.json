@@ -1,8 +1,8 @@
 {
   "name": "quiqqer/urlshortener",
   "type": "quiqqer-module",
-  "description": "URL Shortener",
-  "version": "dev-master",
+  "description": "URL and Link Shortener for QUIQQER.",
+  "version": "dev-dev",
   "license": "MIT",
   "authors": [
     {
