@@ -3,8 +3,9 @@
     <global>
         <table name="urlshortener">
             <field type="BIGINT(20)">id</field>
-            <field type="VARCHAR(10) NULL">shortened</field>
+            <field type="VARCHAR(100) NULL">shortened</field>
             <field type="TEXT NULL">url</field>
+            <field type="TEXT NULL">host</field>
             <field type="TEXT NULL">title</field>
             <field type="TEXT NULL">description</field>
             <field type="TEXT NULL">params</field>

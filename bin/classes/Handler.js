@@ -2,11 +2,8 @@
  * URL shortener handler
  * Create and edit urls
  *
+ * @module package/quiqqer/urlshortener/bin/classes/Handler
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/classes/DOM
- * @require Ajax
  */
 define('package/quiqqer/urlshortener/bin/classes/Handler', [
 
@@ -124,7 +121,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
          * @param {Number} urlId
          * @param {Object} data - url attributes
          */
-        save: function (urlId, data) {
+        update: function (urlId, data) {
             return new Promise(function (resolve, reject) {
                 QUIAjax.post('package_quiqqer_urlshortener_ajax_update', resolve, {
                     'package': 'quiqqer/urlshortener',

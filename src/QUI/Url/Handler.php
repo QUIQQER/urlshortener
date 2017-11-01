@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Url\Handler
  */
+
 namespace QUI\Url;
 
 use QUI;
@@ -32,7 +33,8 @@ class Handler extends QUI\CRUD\Factory
             'url',
             'title',
             'description',
-            'params'
+            'params',
+            'hosts'
         );
     }
 

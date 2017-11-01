@@ -1,11 +1,38 @@
 <form class="urlshortener-add">
-    <label>
-        <span class="label">Kurz-URL</span>
-        <input type="text" name="shortened"/>
-    </label>
-
-    <label>
-        <span class="label">Weiterleiten zu</span>
-        <input type="text" name="url"/>
-    </label>
+    <table class="data-table data-table-flexbox">
+        <tbody>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        Kurz-URL
+                    </span>
+                    <input type="text" class="field-container-field" name="shortened"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        Weiterleiten zu
+                    </span>
+                    <input type="text" class="field-container-field" name="url"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                    <span class="field-container-item">
+                        Host
+                    </span>
+                    <select class="field-container-field" name="hosts">
+                        <option value="">Für alle Hosts</option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </form>

@@ -43,6 +43,10 @@
             <de><![CDATA[Link hinzufügen]]></de>
             <en><![CDATA[Add Link]]></en>
         </locale>
+        <locale name="window.edit.title">
+            <de><![CDATA[Link bearbeiten]]></de>
+            <en><![CDATA[Edit Link]]></en>
+        </locale>
 
         <locale name="window.remove.title">
             <de><![CDATA[Link entfernen]]></de>

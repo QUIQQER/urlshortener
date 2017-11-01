@@ -34,6 +34,7 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
             '$onResize',
             'refresh',
             'add',
+            'edit',
             'remove'
         ],
 
@@ -62,6 +63,16 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                 text     : QUILocale.get('quiqqer/system', 'add'),
                 events   : {
                     onClick: this.add
+                }
+            });
+
+            this.addButton({
+                name     : 'edit',
+                textimage: 'fa fa-edit',
+                text     : QUILocale.get('quiqqer/system', 'edit'),
+                disabled : true,
+                events   : {
+                    onClick: this.edit
                 }
             });
 
@@ -113,10 +124,15 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                 onClick   : function () {
                     var selected = self.$Grid.getSelectedData();
 
+                    self.getButtons('delete').disable();
+                    self.getButtons('edit').disable();
+
                     if (selected.length) {
                         self.getButtons('delete').enable();
-                    } else {
-                        self.getButtons('delete').disable();
+                    }
+
+                    if (selected.length === 1) {
+                        self.getButtons('edit').enable();
                     }
                 }
             });
@@ -189,9 +205,60 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                         var Url       = Content.getElement('[name="url"]');
 
                         Handler.createChild(
-                            Shortened.value,
-                            Url.value
+                            Url.value,
+                            Shortened.value
                         ).then(function () {
+                            return self.refresh();
+                        }).then(function () {
+                            Win.close();
+                        }).catch(function () {
+                            Win.Loader.hide();
+                        });
+                    }
+                }
+            }).open();
+        },
+
+        edit: function () {
+            var selected = this.$Grid.getSelectedData();
+
+            if (selected.length !== 1) {
+                return;
+            }
+
+            var self = this,
+                data = selected[0],
+                id   = data.id;
+
+            new QUIConfirm({
+                title    : QUILocale.get(lg, 'window.edit.title'),
+                icon     : 'fa fa-edit',
+                maxHeight: 400,
+                maxWidth : 600,
+                autoclose: false,
+                events   : {
+                    onOpen  : function (Win) {
+                        var Content = Win.getContent();
+
+                        Content.set('html', Mustache.render(templateAdd));
+
+                        var Shortened = Content.getElement('[name="shortened"]');
+                        var Url       = Content.getElement('[name="url"]');
+
+                        Shortened.value = data.shortened;
+                        Url.value       = data.url;
+                    },
+                    onSubmit: function (Win) {
+                        Win.Loader.show();
+
+                        var Content   = Win.getContent();
+                        var Shortened = Content.getElement('[name="shortened"]');
+                        var Url       = Content.getElement('[name="url"]');
+
+                        Handler.update(id, {
+                            shortened: Shortened.value,
+                            url      : Url.value
+                        }).then(function () {
                             return self.refresh();
                         }).then(function () {
                             Win.close();

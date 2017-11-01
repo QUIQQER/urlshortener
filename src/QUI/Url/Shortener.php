@@ -64,18 +64,18 @@ class Shortener
         }
 
         // nexgam switch
-        $url = parse_url($result[0]['url']);
-        parse_str($url['query'], $query);
+//        $url = parse_url($result[0]['url']);
+//        parse_str($url['query'], $query);
+//
+//        $query['customid'] = '5337485606';
+//        $query['campid']   = 5337485606;
+//
+//        $url['query'] = http_build_query($query);
+//
+//        $_url = 'http://'.$url['host'].$url['path'].'?'.$url['query'];
+//        $Redirect = new RedirectResponse($_url);
 
-        $query['customid'] = '5337485606';
-        $query['campid']   = 5337485606;
-
-        $url['query'] = http_build_query($query);
-
-        $_url = 'http://'.$url['host'].$url['path'].'?'.$url['query'];
-
-        //$Redirect = new RedirectResponse($result[0]['url']);
-        $Redirect = new RedirectResponse($_url);
+        $Redirect = new RedirectResponse($result[0]['url']);
         $Redirect->setStatusCode(Response::HTTP_SEE_OTHER);
 
         echo $Redirect->getContent();
