@@ -15,14 +15,13 @@
  */
 QUI::$Ajax->registerFunction(
     'package_quiqqer_urlshortener_ajax_update',
-    function ($urlId, $target, $shortened) {
+    function ($urlId, $params) {
         $Handler = new QUI\Url\Handler();
         $Url     = $Handler->getChild($urlId);
 
-        $Url->setAttribute('url', $target);
-        $Url->setAttribute('shortened', $shortened);
+        $Url->setAttributes(json_decode($params, true));
         $Url->update();
     },
-    array('urlId', 'target', 'shortened'),
+    array('urlId', 'params'),
     'Permission::checkAdminUser'
 );

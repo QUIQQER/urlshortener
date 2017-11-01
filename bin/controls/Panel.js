@@ -116,11 +116,7 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
 
             this.$Grid.addEvents({
                 onRefresh : this.refresh,
-                onDblClick: function (event) {
-                    self.editChild(
-                        self.$Grid.getDataByRow(event.row).id
-                    );
-                },
+                onDblClick: this.edit,
                 onClick   : function () {
                     var selected = self.$Grid.getSelectedData();
 
@@ -219,6 +215,9 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
             }).open();
         },
 
+        /**
+         * Edit an url entry
+         */
         edit: function () {
             var selected = this.$Grid.getSelectedData();
 

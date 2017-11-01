@@ -9,6 +9,7 @@
             <field type="TEXT NULL">title</field>
             <field type="TEXT NULL">description</field>
             <field type="TEXT NULL">params</field>
+            <field type="INT(20) NULL">count</field>
 
             <primary>id</primary>
             <auto_increment>id</auto_increment>
