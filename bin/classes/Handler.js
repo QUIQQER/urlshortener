@@ -14,7 +14,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
     'qui/classes/DOM',
     'Ajax'
 
-], function (QUI, QUIDOM, Ajax) {
+], function (QUI, QUIDOM, QUIAjax) {
     "use strict";
 
     return new Class({
@@ -23,7 +23,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         Type   : 'package/quiqqer/urlshortener/bin/classes/Handler',
 
         /**
-         * Search url shortenr
+         * Search an url
          *
          * @param {Object} [params] - query params
          * @returns {Promise}
@@ -32,7 +32,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
             params = params || {};
 
             return new Promise(function (resolve, reject) {
-                Ajax.get('package_quiqqer_urlshortener_ajax_search', resolve, {
+                QUIAjax.get('package_quiqqer_urlshortener_ajax_search', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
                     params   : JSON.encode(params)
@@ -41,13 +41,14 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         },
 
         /**
+         * Return the data of an url
          *
          * @param {number} urlId
          * @returns {Promise}
          */
         getChild: function (urlId) {
             return new Promise(function (resolve, reject) {
-                Ajax.get('package_quiqqer_urlshortener_ajax_get', resolve, {
+                QUIAjax.get('package_quiqqer_urlshortener_ajax_get', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
                     id       : parseInt(urlId)
@@ -56,7 +57,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         },
 
         /**
-         * Search shortend urls and return the result for a grid
+         * Search shortened urls and return the result for a grid
          *
          * @param {Object} params
          * @returns {Promise}
@@ -65,7 +66,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
             params = params || {};
 
             return new Promise(function (resolve, reject) {
-                Ajax.get('package_quiqqer_urlshortener_ajax_list', resolve, {
+                QUIAjax.get('package_quiqqer_urlshortener_ajax_list', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
                     params   : JSON.encode(params)
@@ -74,55 +75,42 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         },
 
         /**
-         * Create a new shortend url
+         * Create a new shortened url
          *
-         * @params {Array} [params] - url attributes
+         * @params {String} url
+         * @params {String} [shortened]
          * @returns {Promise}
          */
-        createChild: function (params) {
+        createChild: function (url, shortened) {
             return new Promise(function (resolve, reject) {
-                Ajax.post('package_quiqqer_urlshortener_ajax_create', function (result) {
-
-                    require([
-                        'package/quiqqer/translator/bin/classes/Translator'
-                    ], function (Translator) {
-                        new Translator().refreshLocale().then(function () {
-                            resolve(result);
-                        });
-                    });
-                }, {
+                QUIAjax.post('package_quiqqer_urlshortener_ajax_create', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
-                    params   : JSON.encode(params)
+                    target   : url,
+                    shortened: shortened || false
                 });
             });
         },
 
         /**
-         * Delete an shortend url
+         * Delete an shortened url
          *
          * @param {Number} urlId - URL-ID
          * @returns {Promise}
          */
         deleteChild: function (urlId) {
-            return new Promise(function (resolve, reject) {
-                Ajax.post('package_quiqqer_urlshortener_ajax_deleteChild', resolve, {
-                    'package': 'quiqqer/urlshortener',
-                    onError  : reject,
-                    urlId    : urlId
-                });
-            });
+            return this.deleteChildren([urlId]);
         },
 
         /**
-         * Delete multible shortend urls
+         * Delete multiple shortened urls
          *
          * @param {Array} urlIds - array of URL-IDs
          * @returns {Promise}
          */
         deleteChildren: function (urlIds) {
             return new Promise(function (resolve, reject) {
-                Ajax.post('package_quiqqer_urlshortener_ajax_deleteChildren', resolve, {
+                QUIAjax.post('package_quiqqer_urlshortener_ajax_delete', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
                     urlIds   : JSON.encode(urlIds)
@@ -131,14 +119,14 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         },
 
         /**
-         * Save an shortend url
+         * Save an shortened url
          *
          * @param {Number} urlId
          * @param {Object} data - url attributes
          */
         save: function (urlId, data) {
             return new Promise(function (resolve, reject) {
-                Ajax.post('package_quiqqer_urlshortener_ajax_update', resolve, {
+                QUIAjax.post('package_quiqqer_urlshortener_ajax_update', resolve, {
                     'package': 'quiqqer/urlshortener',
                     onError  : reject,
                     urlId    : urlId,

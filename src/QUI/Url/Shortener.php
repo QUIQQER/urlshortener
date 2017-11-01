@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Url\Shortener
  */
+
 namespace QUI\Url;
 
 use QUI;
@@ -46,7 +47,8 @@ class Shortener
             'from'  => self::getDataBaseTableName(),
             'where' => array(
                 'shortened' => $url
-            )
+            ),
+            'limit' => 1
         ));
 
         if (!isset($result[0])) {
@@ -70,7 +72,7 @@ class Shortener
 
         $url['query'] = http_build_query($query);
 
-        $_url = 'http://' . $url['host'] . $url['path'] . '?' . $url['query'];
+        $_url = 'http://'.$url['host'].$url['path'].'?'.$url['query'];
 
         //$Redirect = new RedirectResponse($result[0]['url']);
         $Redirect = new RedirectResponse($_url);
@@ -84,26 +86,68 @@ class Shortener
     /**
      * Add a new url and return the shorten link
      *
-     * @param string $url
-     * @return string
+     * @param string $url - target url
+     * @param string|bool $shortened - default = if false = random shortened url
+     * @return string - new url
+     *
+     * @throws Exception
      */
-    public function addUrl($url)
+    public function addUrl($url, $shortened = false)
     {
-        $random = $this->random();
+        if (!is_string($shortened)) {
+            $shortened = $this->random();
+        }
 
-        QUI::getDataBase()->insert(
-            $this->getDataBaseTableName(),
-            array(
-                'shortened' => $random,
-                'url'       => $url
-            )
-        );
+        if (empty($url)) {
+            throw new Exception(array(
+                'quiqqer/urlshortener',
+                'exception.url.empty'
+            ));
+        }
 
-        return rtrim(HOST, '/') . URL_DIR . $random;
+        $result = QUI::getDataBase()->fetch(array(
+            'from'  => self::getDataBaseTableName(),
+            'where' => array(
+                'shortened' => $shortened
+            ),
+            'limit' => 1
+        ));
+
+        if (isset($result[0])) {
+            throw new Exception(array(
+                'quiqqer/urlshortener',
+                'exception.url.already.exists'
+            ));
+        }
+
+        QUI::getDataBase()->insert($this->getDataBaseTableName(), array(
+            'shortened' => $shortened,
+            'url'       => $url
+        ));
+
+        return rtrim(HOST, '/').URL_DIR.$shortened;
     }
 
     /**
-     * Return random shortend
+     * Delete an url or multiple urls
+     *
+     * @param integer|array $urlId
+     */
+    public function deleteUrl($urlId)
+    {
+        if (!is_array($urlId)) {
+            $urlId = array($urlId);
+        }
+
+        foreach ($urlId as $id) {
+            QUI::getDataBase()->delete($this->getDataBaseTableName(), array(
+                'id' => $id
+            ));
+        }
+    }
+
+    /**
+     * Return random shortened
      *
      * @return string
      */

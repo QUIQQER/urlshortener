@@ -18,8 +18,18 @@
         </locale>
     </groups>
 
-    <groups name="quiqqer/urlshortener" datatype="js">
+    <groups name="quiqqer/urlshortener" datatype="php">
+        <locale name="exception.url.empty">
+            <de><![CDATA[Bitte geben Sie eine Url an.]]></de>
+            <en><![CDATA[Please enter an url.]]></en>
+        </locale>
+        <locale name="exception.url.already.exists">
+            <de><![CDATA[Die Kurz-URL existiert bereits und kann nicht angelegt werden.]]></de>
+            <en><![CDATA[The short URL already exists and can not be created]]></en>
+        </locale>
+    </groups>
 
+    <groups name="quiqqer/urlshortener" datatype="js">
         <locale name="grid.title.url">
             <de><![CDATA[Weiterleitung zu]]></de>
             <en><![CDATA[Forwarding to]]></en>
@@ -29,5 +39,28 @@
             <en><![CDATA[Shortend URL]]></en>
         </locale>
 
+        <locale name="window.add.title">
+            <de><![CDATA[Link hinzufügen]]></de>
+            <en><![CDATA[Add Link]]></en>
+        </locale>
+
+        <locale name="window.remove.title">
+            <de><![CDATA[Link entfernen]]></de>
+            <en><![CDATA[Remove Link]]></en>
+        </locale>
+        <locale name="window.remove.text">
+            <de><![CDATA[Folgende Links entfernen:]]></de>
+            <en><![CDATA[Remove the following links:]]></en>
+        </locale>
+        <locale name="window.remove.information" html="true">
+            <de><![CDATA[
+                <strong>[ids]</strong><br /><br />
+                Die Links werden entfernt und können nicht wiederhergestellt werden.
+            ]]></de>
+            <en><![CDATA[
+                <strong>[ids]</strong><br /><br />
+                The links are removed and can not be restored.
+            ]]></en>
+        </locale>
     </groups>
 </locales>

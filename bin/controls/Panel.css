@@ -1,0 +1,21 @@
+.urlshortener-add {
+    float: left;
+    width: 100%;
+}
+
+.urlshortener-add label {
+    clear: both;
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.urlshortener-add .label {
+    float: left;
+    width: 30%;
+}
+
+.urlshortener-add input {
+    float: left;
+    width: 70%;
+}
