@@ -12,10 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class Shortener
+ *
  * @package QUI\Url
  */
 class Shortener
 {
+    protected static $Config = null;
+
     /**
      * Return the database table name
      *
@@ -24,6 +27,56 @@ class Shortener
     public static function getDataBaseTableName()
     {
         return QUI::getDBTableName('urlshortener');
+    }
+
+    /**
+     * Return the shrotener config object
+     *
+     * @return bool|null|QUI\Config
+     */
+    protected static function getConfig()
+    {
+        if (self::$Config === null) {
+            self::$Config = QUI::getPackage('quiqqer/urlshortener')->getConfig();
+        }
+
+        return self::$Config;
+    }
+
+    /**
+     * Return the default host for the links
+     *
+     * @return string
+     */
+    public static function getDefaultHost()
+    {
+        $host = self::getConfig()->get('general', 'host');
+
+        if (!empty($host)) {
+            return $host;
+        }
+
+        return QUI::getProjectManager()->get()->getVHost(true, true);
+    }
+
+    /**
+     * Locale tracking?
+     *
+     * @return bool
+     */
+    protected static function isLocaleTrackingOn()
+    {
+        return false;
+    }
+
+    /**
+     * Piwik tracking?
+     *
+     * @return bool
+     */
+    protected static function isPiwikTrackingOn()
+    {
+        return false;
     }
 
     /**
@@ -55,12 +108,24 @@ class Shortener
             return;
         }
 
-        if (class_exists('QUI\Piwik\Piwik')) {
+
+        // piwik tracking
+        if (class_exists('QUI\Piwik\Piwik') && self::isPiwikTrackingOn()) {
             $Project = $Rewrite->getProject();
             $Piwik   = QUI\Piwik\Piwik::getPiwikClient($Project);
 
             $Piwik->setIp(QUI\Utils\System::getClientIP());
             $Piwik->doTrackPageView($url);
+        }
+
+        // locale tracking
+        if (self::isLocaleTrackingOn()) {
+        }
+        
+        $url = $result[0]['url'];
+
+        if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
+            $url = 'https://'.$url;
         }
 
         // nexgam switch
@@ -75,7 +140,7 @@ class Shortener
 //        $_url = 'http://'.$url['host'].$url['path'].'?'.$url['query'];
 //        $Redirect = new RedirectResponse($_url);
 
-        $Redirect = new RedirectResponse($result[0]['url']);
+        $Redirect = new RedirectResponse($url);
         $Redirect->setStatusCode(Response::HTTP_SEE_OTHER);
 
         echo $Redirect->getContent();

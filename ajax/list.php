@@ -14,23 +14,32 @@
 QUI::$Ajax->registerFunction(
     'package_quiqqer_urlshortener_ajax_list',
     function ($params) {
-        $Urls   = new QUI\Url\Handler();
-        $result = array();
-        $Grid   = new \QUI\Utils\Grid();
+        $Handler = new QUI\Url\Handler();
+        $Grid    = new QUI\Utils\Grid();
+        $result  = array();
 
-        $data = $Urls->getChildrenData(
+        $data = $Handler->getChildrenData(
             $Grid->parseDBParams(json_decode($params, true))
         );
 
+        $defaultHost = QUI\Url\Shortener::getDefaultHost();
+        $defaultHost = rtrim($defaultHost, '/').'/';
+
         foreach ($data as $entry) {
+            // default host
+            if (empty($entry['host'])) {
+                $entry['host'] = $defaultHost;
+            }
+
             $result[] = array(
-                'id' => $entry['id'],
-                'url' => $entry['url'],
-                'shortened' => $entry['shortened']
+                'id'        => $entry['id'],
+                'url'       => $entry['url'],
+                'shortened' => $entry['shortened'],
+                'host'      => $entry['host']
             );
         }
 
-        return $Grid->parseResult($result, $Urls->countChildren());
+        return $Grid->parseResult($result, $Handler->countChildren());
     },
     array('params'),
     'Permission::checkAdminUser'

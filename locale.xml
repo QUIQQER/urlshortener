@@ -66,5 +66,9 @@
                 The links are removed and can not be restored.
             ]]></en>
         </locale>
+        <locale name="copy.to.clipboard">
+            <de><![CDATA[[url] in die Zwischenablage kopieren]]></de>
+            <en><![CDATA[Copy [url] to the Clipboard]]></en>
+        </locale>
     </groups>
 </locales>

@@ -77,6 +77,10 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
             });
 
             this.addButton({
+                type: 'separator'
+            });
+
+            this.addButton({
                 name     : 'delete',
                 textimage: 'fa fa-trash',
                 text     : QUILocale.get('quiqqer/system', 'remove'),
@@ -97,6 +101,11 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                 multipleSelection: true,
                 pagination       : true,
                 columnModel      : [{
+                    header   : '',
+                    dataIndex: 'copy',
+                    dataType : 'button',
+                    width    : 40
+                }, {
                     header   : QUILocale.get('quiqqer/system', 'id'),
                     dataIndex: 'id',
                     dataType : 'number',
@@ -110,7 +119,11 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                     header   : QUILocale.get(lg, 'grid.title.url'),
                     dataIndex: 'url',
                     dataType : 'string',
-                    width    : 800
+                    width    : 300
+                }, {
+                    dataIndex: 'host',
+                    dataType : 'string',
+                    hidden   : true
                 }]
             });
 
@@ -170,6 +183,32 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                 perPage: this.$Grid.options.perPage,
                 page   : this.$Grid.options.page
             }).then(function (data) {
+                var copy = function (Btn) {
+                    require([URL_OPT_DIR + 'bin/clipboard/dist/clipboard'], function (Clipboard) {
+                        console.warn(Clipboard);
+                    });
+                    console.warn(Btn.getAttribute('url'));
+                };
+
+                for (var i = 0, len = data.data.length; i < len; i++) {
+                    data.data[i].copy = {
+                        icon  : 'fa fa-copy',
+                        url   : data.data[i].host + data.data[i].shortened,
+                        title : QUILocale.get(lg, 'copy.to.clipboard', {
+                            url: data.data[i].host + data.data[i].shortened
+                        }),
+                        events: {
+                            onClick: copy
+                        },
+                        styles: {
+                            'float'   : 'none',
+                            lineHeight: 10,
+                            margin    : '5px 0 0',
+                            padding   : 2
+                        }
+                    };
+                }
+
                 self.$Grid.setData(data);
                 self.Loader.hide();
             });
