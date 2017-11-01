@@ -121,7 +121,7 @@ class Shortener
         // locale tracking
         if (self::isLocaleTrackingOn()) {
         }
-        
+
         $url = $result[0]['url'];
 
         if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
