@@ -19,6 +19,39 @@
     </groups>
 
     <groups name="quiqqer/urlshortener" datatype="php">
+        <locale name="settings.title">
+            <de><![CDATA[URL-Shortener]]></de>
+            <en><![CDATA[URL-Shortener]]></en>
+        </locale>
+        <locale name="settings.general.title">
+            <de><![CDATA[Allgemein]]></de>
+            <en><![CDATA[General]]></en>
+        </locale>
+        <locale name="settings.default.host">
+            <de><![CDATA[Standard Host für die Links]]></de>
+            <en><![CDATA[Default host for the links]]></en>
+        </locale>
+        <locale name="settings.tracking.title">
+            <de><![CDATA[Tracking Einstellungen]]></de>
+            <en><![CDATA[Tracking settings]]></en>
+        </locale>
+        <locale name="settings.tracking.locale">
+            <de><![CDATA[Lokales Tracking]]></de>
+            <en><![CDATA[Locale Tracking]]></en>
+        </locale>
+        <locale name="settings.tracking.locale.description">
+            <de><![CDATA[Lokales Tracking aktivieren]]></de>
+            <en><![CDATA[Activating Local Tracking]]></en>
+        </locale>
+        <locale name="settings.tracking.piwik">
+            <de><![CDATA[PIWIK Tracking]]></de>
+            <en><![CDATA[PIWIK Tracking]]></en>
+        </locale>
+        <locale name="settings.tracking.piwik.description">
+            <de><![CDATA[PIWIK Tracking aktivieren]]></de>
+            <en><![CDATA[Activating PIWIK Tracking]]></en>
+        </locale>
+
         <locale name="exception.url.empty">
             <de><![CDATA[Bitte geben Sie eine Url an.]]></de>
             <en><![CDATA[Please enter an url.]]></en>

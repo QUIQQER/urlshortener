@@ -4,6 +4,9 @@
 
         <config>
             <section name="general">
+                <conf name="host">
+                    <type><![CDATA[string]]></type>
+                </conf>
                 <conf name="piwikTracking">
                     <type><![CDATA[bool]]></type>
                     <defaultvalue>0</defaultvalue>
@@ -13,12 +16,65 @@
                     <defaultvalue>1</defaultvalue>
                 </conf>
             </section>
-
-            <section name="hosts">
-
-            </section>
-
         </config>
+
+        <window>
+            <title>
+                <locale group="quiqqer/urlshortener" var="settings.title"/>
+            </title>
+            <params>
+                <icon>fa fa-chain-broken</icon>
+            </params>
+
+            <categories>
+                <category name="general">
+                    <text>
+                        <locale group="quiqqer/urlshortener" var="settings.general.title"/>
+                    </text>
+                    <icon>fa fa-gears</icon>
+
+                    <settings title="general" name="general">
+                        <title>
+                            <locale group="quiqqer/urlshortener" var="settings.general.title"/>
+                        </title>
+                        <select conf="general.host"
+                                data-qui="package/quiqqer/urlshortener/bin/controls/settings/Hosts"
+                        >
+                            <text>
+                                <locale group="quiqqer/urlshortener" var="settings.default.host"/>
+                            </text>
+                        </select>
+                    </settings>
+
+                    <settings title="general" name="general">
+                        <title>
+                            <locale group="quiqqer/urlshortener" var="settings.tracking.title"/>
+                        </title>
+
+                        <input conf="general.localeTracking" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/urlshortener" var="settings.tracking.locale"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/urlshortener" var="settings.tracking.locale.description"/>
+                                Lokales Tracking aktivieren
+                            </description>
+                        </input>
+
+                        <input conf="general.piwikTracking" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/urlshortener" var="settings.tracking.piwik"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/urlshortener" var="settings.tracking.piwik.description"/>
+                            </description>
+                        </input>
+                    </settings>
+                </category>
+
+            </categories>
+        </window>
+
 
     </settings>
 </quiqqer>

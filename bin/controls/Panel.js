@@ -238,6 +238,19 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                         var Content = Win.getContent();
 
                         Content.set('html', Mustache.render(templateAdd));
+
+                        var Hosts = Content.getElement('[name="hosts"]');
+
+                        Handler.getHosts().then(function (hosts) {
+                            for (var i = 0, len = hosts.length; i < len; i++) {
+                                new Element('option', {
+                                    html : hosts[i],
+                                    value: hosts[i]
+                                }).inject(Hosts);
+                            }
+
+                            Win.Loader.hide();
+                        });
                     },
                     onSubmit: function (Win) {
                         Win.Loader.show();

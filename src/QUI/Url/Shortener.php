@@ -66,14 +66,17 @@ class Shortener
      */
     public static function getAvailableHosts()
     {
-        $hosts = self::getConfig()->getSection('hosts');
-        $list  = array();
+        $hosts = array();
 
-        foreach ($hosts as $host) {
-            $list[] = rtrim($host, '/').'/';
+        foreach (QUI::vhosts() as $host => $data) {
+            if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
+                $host = 'https://'.$host;
+            }
+
+            $hosts[] = $host;
         }
 
-        return $list;
+        return $hosts;
     }
 
     /**
