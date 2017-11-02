@@ -71,6 +71,10 @@
             <de><![CDATA[Kurz-URL]]></de>
             <en><![CDATA[Shortend URL]]></en>
         </locale>
+        <locale name="grid.title.count">
+            <de><![CDATA[Aufrufe]]></de>
+            <en><![CDATA[Calls]]></en>
+        </locale>
 
         <locale name="window.add.title">
             <de><![CDATA[Link hinzufügen]]></de>

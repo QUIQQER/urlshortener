@@ -121,6 +121,11 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                     dataType : 'string',
                     width    : 300
                 }, {
+                    header   : QUILocale.get(lg, 'grid.title.count'),
+                    dataIndex: 'count',
+                    dataType : 'string',
+                    width    : 300
+                }, {
                     dataIndex: 'host',
                     dataType : 'string',
                     hidden   : true

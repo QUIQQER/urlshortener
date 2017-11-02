@@ -140,6 +140,15 @@ class Shortener
 
         // locale tracking
         if (self::isLocaleTrackingOn()) {
+            if (empty($result[0]['count'])) {
+                $result[0]['count'] = 0;
+            }
+
+            QUI::getDataBase()->update(self::getDataBaseTableName(), array(
+                'count' => $result[0]['count'] + 1
+            ), array(
+                'id' => $result[0]['id']
+            ));
         }
 
         $url = $result[0]['url'];
