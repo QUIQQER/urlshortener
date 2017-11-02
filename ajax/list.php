@@ -35,7 +35,8 @@ QUI::$Ajax->registerFunction(
                 'id'        => $entry['id'],
                 'url'       => $entry['url'],
                 'shortened' => $entry['shortened'],
-                'host'      => rtrim($entry['host'], '/').'/'
+                'host'      => rtrim($entry['host'], '/').'/',
+                'count'     => $entry['count']
             );
         }
 
