@@ -38,6 +38,19 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
         },
 
         /**
+         *
+         * @return {Promise}
+         */
+        getHosts: function () {
+            return new Promise(function (resolve, reject) {
+                QUIAjax.get('package_quiqqer_urlshortener_ajax_getHosts', resolve, {
+                    'package': 'quiqqer/urlshortener',
+                    onError  : reject
+                });
+            });
+        },
+
+        /**
          * Return the data of an url
          *
          * @param {number} urlId
@@ -120,6 +133,7 @@ define('package/quiqqer/urlshortener/bin/classes/Handler', [
          *
          * @param {Number} urlId
          * @param {Object} data - url attributes
+         * @returns {Promise}
          */
         update: function (urlId, data) {
             return new Promise(function (resolve, reject) {

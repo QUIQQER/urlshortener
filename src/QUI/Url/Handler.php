@@ -34,7 +34,7 @@ class Handler extends QUI\CRUD\Factory
             'title',
             'description',
             'params',
-            'hosts'
+            'host'
         );
     }
 

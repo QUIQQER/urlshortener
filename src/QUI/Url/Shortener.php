@@ -60,13 +60,30 @@ class Shortener
     }
 
     /**
+     * Return the available hosts
+     *
+     * @return array
+     */
+    public static function getAvailableHosts()
+    {
+        $hosts = self::getConfig()->getSection('hosts');
+        $list  = array();
+
+        foreach ($hosts as $host) {
+            $list[] = rtrim($host, '/').'/';
+        }
+
+        return $list;
+    }
+
+    /**
      * Locale tracking?
      *
      * @return bool
      */
     protected static function isLocaleTrackingOn()
     {
-        return false;
+        return self::getConfig()->get('general', 'localeTracking');
     }
 
     /**
@@ -76,7 +93,7 @@ class Shortener
      */
     protected static function isPiwikTrackingOn()
     {
-        return false;
+        return self::getConfig()->get('general', 'piwikTracking');
     }
 
     /**

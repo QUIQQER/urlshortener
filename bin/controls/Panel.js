@@ -285,24 +285,42 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                     onOpen  : function (Win) {
                         var Content = Win.getContent();
 
+                        Win.Loader.show();
+
                         Content.set('html', Mustache.render(templateAdd));
 
                         var Shortened = Content.getElement('[name="shortened"]');
                         var Url       = Content.getElement('[name="url"]');
+                        var Hosts     = Content.getElement('[name="hosts"]');
 
                         Shortened.value = data.shortened;
                         Url.value       = data.url;
+
+                        Handler.getHosts().then(function (hosts) {
+                            for (var i = 0, len = hosts.length; i < len; i++) {
+                                new Element('option', {
+                                    html : hosts[i],
+                                    value: hosts[i]
+                                }).inject(Hosts);
+                            }
+
+                            Hosts.value = data.host;
+
+                            Win.Loader.hide();
+                        });
                     },
                     onSubmit: function (Win) {
                         Win.Loader.show();
 
-                        var Content   = Win.getContent();
-                        var Shortened = Content.getElement('[name="shortened"]');
-                        var Url       = Content.getElement('[name="url"]');
+                        var Content   = Win.getContent(),
+                            Shortened = Content.getElement('[name="shortened"]'),
+                            Url       = Content.getElement('[name="url"]'),
+                            Hosts     = Content.getElement('[name="hosts"]');
 
                         Handler.update(id, {
                             shortened: Shortened.value,
-                            url      : Url.value
+                            url      : Url.value,
+                            host     : Hosts.value
                         }).then(function () {
                             return self.refresh();
                         }).then(function () {
