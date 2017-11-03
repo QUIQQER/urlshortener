@@ -8,6 +8,8 @@
             <locale group="quiqqer/urlshortener" var="package.description"/>
         </description>
 
+        <image src="URL_OPT_DIR/quiqqer/urlshortener/bin/images/Logo.png"/>
+
         <support>
             <email><![CDATA[support@pcsg.de]]></email>
             <forum><![CDATA[https://community.quiqqer.com]]></forum>
