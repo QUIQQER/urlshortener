@@ -3,7 +3,7 @@
   "type": "quiqqer-module",
   "description": "URL and Link Shortener for QUIQQER.",
   "version": "dev-master",
-  "license": "MIT",
+  "license": "GPL-3.0+",
   "authors": [
     {
       "name": "PCSG",

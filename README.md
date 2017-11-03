@@ -1,8 +1,9 @@
+![URL Shortener](bin/images/Readme.jpg)
 
 URL Shortener
 ========
 
-URL und Link Shortener für QUIQQER.
+URL and Link Shortener for QUIQQER.
 
 Paketname:
 
@@ -12,12 +13,13 @@ Paketname:
 Features (Funktionen)
 --------
 
-- Macht lange URLs zu kurzen und leitet diese weiter.
+- Make long URLs too short and forward them.
+
 
 Installation
 ------------
 
-Der Paketname ist: quiqqer/urlshortener
+The package name is: quiqqer/urlshortener
 
 
 Mitwirken
@@ -30,21 +32,14 @@ Mitwirken
 Support
 -------
 
-Falls Sie ein Fehler gefunden haben, oder Verbesserungen wünschen,
-dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
+If you have found errors, wishes or suggestions for improvement,
+you can contact us by email at support@pcsg.de.
+
+We will try to meet your needs or send them to the responsible developers
+of the project.
 
 
-Lizenz
+License
 -------
 
-MIT
-
-Entwickler
---------
-
-```php
-<?php
-
-$Shortener = new QUI\Url\Shortener();
-$shortend  = $Shortener->addUrl($article['url']);
-```
+GPL-3.0+
