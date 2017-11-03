@@ -22,7 +22,7 @@ Installation
 The package name is: quiqqer/urlshortener
 
 
-Mitwirken
+Contribute
 ----------
 
 - Issue Tracker: https://dev.quiqqer.com/quiqqer/urlshortener/issues
