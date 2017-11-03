@@ -184,6 +184,9 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
 
             this.Loader.show();
 
+            this.getButtons('delete').disable();
+            this.getButtons('edit').disable();
+
             return Handler.getList({
                 perPage: this.$Grid.options.perPage,
                 page   : this.$Grid.options.page
