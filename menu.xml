@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu>
-    <item parent="/extras/"
+    <item parent="/apps/"
           name="urlshortener"
           require="package/quiqqer/urlshortener/bin/controls/Panel"
           icon="fa fa-chain-broken"

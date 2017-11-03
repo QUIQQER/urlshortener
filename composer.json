@@ -1,6 +1,6 @@
 {
   "name": "quiqqer/urlshortener",
-  "type": "quiqqer-module",
+  "type": "quiqqer-app",
   "description": "URL and Link Shortener for QUIQQER.",
   "version": "dev-dev",
   "license": "GPL-3.0+",
