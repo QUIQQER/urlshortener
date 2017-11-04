@@ -2,7 +2,7 @@
   "name": "quiqqer/urlshortener",
   "type": "quiqqer-app",
   "description": "URL and Link Shortener for QUIQQER.",
-  "version": "dev-master",
+  "version": "1.0.1",
   "license": "GPL-3.0+",
   "authors": [
     {
