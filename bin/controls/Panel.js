@@ -212,7 +212,7 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                 // clipboard copy
                 var copyButtons = self.$Grid.getElm().getElements('.fa-copy').getParent('button');
 
-                require([URL_OPT_DIR + 'bin/clipboard/dist/clipboard'], function (Clipboard) {
+                require([URL_OPT_DIR + 'bin/clipboard/dist/clipboard.js'], function (Clipboard) {
                     for (var i = 0, len = copyButtons.length; i < len; i++) {
                         new Clipboard(copyButtons[i], {
                             text: function (trigger) {
