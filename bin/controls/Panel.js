@@ -100,6 +100,9 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
             this.$Grid = new Grid(Container, {
                 multipleSelection: true,
                 pagination       : true,
+                serverSort       : true,
+                sortOn           : 'id',
+                sortBy           : 'DESC',
                 columnModel      : [{
                     header   : '',
                     dataIndex: 'copy',
@@ -189,7 +192,9 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
 
             return Handler.getList({
                 perPage: this.$Grid.options.perPage,
-                page   : this.$Grid.options.page
+                page   : this.$Grid.options.page,
+                sortOn : this.$Grid.options.sortOn,
+                sortBy : this.$Grid.options.sortBy
             }).then(function (data) {
                 for (var i = 0, len = data.data.length; i < len; i++) {
                     data.data[i].copy = {
