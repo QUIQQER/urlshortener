@@ -53,6 +53,10 @@ class Shortener
         $host = self::getConfig()->get('general', 'host');
 
         if (!empty($host)) {
+            if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
+                $host = 'https://'.$host;
+            }
+            
             return $host;
         }
 
@@ -188,7 +192,7 @@ class Shortener
      */
     public function addUrl($url, $shortened = false)
     {
-        if (!is_string($shortened)) {
+        if (!is_string($shortened) || empty($shortened)) {
             $shortened = $this->random();
         }
 
