@@ -56,11 +56,11 @@ class Shortener
             if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
                 $host = 'https://'.$host;
             }
-            
-            return $host;
+        } else {
+            $host = QUI::getProjectManager()->get()->getVHost(true, true);
         }
 
-        return QUI::getProjectManager()->get()->getVHost(true, true);
+        return rtrim($host, '/').'/';
     }
 
     /**
@@ -77,7 +77,7 @@ class Shortener
                 $host = 'https://'.$host;
             }
 
-            $hosts[] = $host;
+            $hosts[] = rtrim($host, '/').'/';
         }
 
         return $hosts;

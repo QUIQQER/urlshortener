@@ -115,9 +115,9 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                     width    : 60
                 }, {
                     header   : QUILocale.get(lg, 'grid.title.shortened'),
-                    dataIndex: 'shortened',
+                    dataIndex: 'full',
                     dataType : 'string',
-                    width    : 120
+                    width    : 200
                 }, {
                     header   : QUILocale.get(lg, 'grid.title.url'),
                     dataIndex: 'url',
@@ -210,6 +210,8 @@ define('package/quiqqer/urlshortener/bin/controls/Panel', [
                             padding   : 2
                         }
                     };
+
+                    data.data[i].full = data.data[i].host + data.data[i].shortened;
                 }
 
                 self.$Grid.setData(data);
