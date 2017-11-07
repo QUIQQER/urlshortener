@@ -1,7 +1,7 @@
 {
   "name": "quiqqer/urlshortener",
   "type": "quiqqer-app",
-  "description": "URL and Link Shortener for QUIQQER.",
+  "description": "QURLS stands for QUIQQER URL Shortener and is a small QUIQQER APP that allows you to run your own URL shortening service (such as TinyURL or bitly).",
   "version": "dev-dev",
   "license": "GPL-3.0+",
   "authors": [
