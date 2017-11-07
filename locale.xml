@@ -13,8 +13,62 @@
         </locale>
 
         <locale name="package.description">
-            <de><![CDATA[URL und Link Shortener für QUIQQER.]]></de>
-            <en><![CDATA[URL and Link Shortener for QUIQQER.]]></en>
+            <de><![CDATA[
+            QURLS stands for QUIQQER URL Shortener and is a small QUIQQER APP that allows you to run your own URL shortening service
+            (such as TinyURL or bitly).
+            ]]></de>
+            <en><![CDATA[
+            QURLS steht für QUIQQER  URL Shortener und  ist eine kleine QUIQQER APP  die es Ihnen ermöglicht Ihren eigenen URL Verkürzungsservice (wie TinyURL oder bitly) zu betreiben.
+            ]]></en>
+        </locale>
+
+        <locale name="package.description.long" html="true">
+            <de><![CDATA[
+            <p>QURLS steht für QUIQQER  URL Shortener und  ist eine kleine QUIQQER APP
+            die es Ihnen ermöglicht Ihren eigenen URL Verkürzungsservice (wie TinyURL oder bitly)
+            zu betreiben.</p>
+
+            <p>Mit einem eigenen URL- Verkürzer Sie sind nicht auf Dienste Dritter angewiesen,
+            Sie können Ihr Branding zu den kurzen URLs hinzuzufügen,
+            anstatt den gleichen öffentlichen URL-Kürzer zu verwenden wie andere.
+            Was für Nutzer und Suchmaschinen von Vorteil ist.
+            Sie sind Variablen in der Gestaltung Ihrer URLs und können QURLS einfach durch
+            weitere Plugins oder Module ergänzen. Das System steht unter der GPL was es
+            Ihnen ermöglicht alle für Sie nötigen Änderungen vorzunehmen wenn Sie dies möchten.</p>
+
+            <h2>Features</h2>
+            <ul>
+            <li>Einfache Installation durch QUIQQER-Setup oder über den QStore</li>
+            <li>OpenSorce</li>
+            <li>Automatische URL Generierung oder Manuelle Vergabe der URL als Keywort</li>
+            <li>Bearbeitung von URLs</li>
+            <li>Multi-Domain fähig (Sie können in einer Installation verschiedene Kurze Domains nutzen)</li>
+            <li>Umfangreiche Statistiken durch Piwik Integration oder  Einfachen  Statistik-Counter per Einstellung wählbar</li>
+            <li>Leichte Erweiterbarkeit und anpassbar durch Nutzung der QUIQQER API (Eventsystem)</li>
+            </ul>
+            ]]></de>
+            <en><![CDATA[
+            <p>QURLS stands for QUIQQER URL Shortener and is a small QUIQQER APP that allows
+            you to run your own URL shortening service (such as TinyURL or bitly).</p>
+
+            <p>With your own URL shortener You don't need third-party services,
+            you can add your branding to the short URLs instead of using the same public
+            URL shortener as others. What is beneficial for users and search engines.
+            You are variables in the design of your URLs and can easily add further
+            plugins or modules to QURLS. The system is under the GPL which allows you
+            to make all necessary changes if you want.</p>
+
+            <h2>Features</h2>
+            <ul>
+            <li>Easy installation through QUIQQER setup or via QStore</li>
+            <li>OpenSorce</li>
+            <li>Automatic URL generation or manual assignment of the URL as keyword</li>
+            <li>Editing URLs</li>
+            <li>Multi-domain capable (you can use different short domains in one installation)</li>
+            <li>Comprehensive statistics through Piwik integration or simple statistic counter per setting selectable</li>
+            <li>Easy extensibility and adaptability by using the QUIQQER API (Event system)</li>
+            </ul>
+            ]]></en>
         </locale>
     </groups>
 

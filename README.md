@@ -3,7 +3,8 @@
 URL Shortener
 ========
 
-URL and Link Shortener for QUIQQER.
+QURLS stands for QUIQQER URL Shortener and is a small 
+QUIQQER APP that allows you to run your own URL shortening service (such as TinyURL or bitly).
 
 Paketname:
 
@@ -13,7 +14,13 @@ Paketname:
 Features (Funktionen)
 --------
 
-- Make long URLs too short and forward them.
+- Easy installation through QUIQQER setup or via QStore</li>
+- OpenSorce</li>
+- Automatic URL generation or manual assignment of the URL as keyword</li>
+- Editing URLs</li>
+- Multi-domain capable (you can use different short domains in one installation)</li>
+- Comprehensive statistics through Piwik integration or simple statistic counter per setting selectable</li>
+- Easy extensibility and adaptability by using the QUIQQER API (Event system)</li>
 
 
 Installation
