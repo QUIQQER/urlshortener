@@ -8,7 +8,7 @@
             <locale group="quiqqer/urlshortener" var="package.description"/>
         </description>
 
-        <image src="URL_OPT_DIR/quiqqer/urlshortener/bin/images/Logo.png"/>
+        <image src="URL_OPT_DIR/quiqqer/urlshortener/bin/images/Logo.jpg"/>
 
         <preview>
             <image src="URL_OPT_DIR/quiqqer/urlshortener/bin/images/screen1.png"/>
