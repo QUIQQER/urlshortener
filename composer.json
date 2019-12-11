@@ -1,29 +1,28 @@
 {
-  "name": "quiqqer/urlshortener",
-  "type": "quiqqer-application",
-  "description": "QURLS stands for QUIQQER URL Shortener and is a small QUIQQER APP that allows you to run your own URL shortening service (such as TinyURL or bitly).",
-  "version": "dev-master",
-  "license": "GPL-3.0+",
-  "authors": [
-    {
-      "name": "PCSG",
-      "email": "support@pcsg.de",
-      "homepage": "http://www.pcsg.de",
-      "role": "Developer"
+    "name": "quiqqer\/urlshortener",
+    "type": "quiqqer-application",
+    "description": "QURLS stands for QUIQQER URL Shortener and is a small QUIQQER APP that allows you to run your own URL shortening service (such as TinyURL or bitly).",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "PCSG",
+            "email": "support@pcsg.de",
+            "homepage": "http:\/\/www.pcsg.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@pcsg.de",
+        "url": "http:\/\/www.pcsg.de"
+    },
+    "require": {
+        "php": ">=5.3",
+        "quiqqer\/quiqqer": "*@dev",
+        "npm-asset\/clipboard": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "QUI\\Url\\": "src\/QUI\/Url"
+        }
     }
-  ],
-  "support": {
-    "email": "support@pcsg.de",
-    "url": "http://www.pcsg.de"
-  },
-  "require": {
-    "php": ">=5.3",
-    "quiqqer/quiqqer": "*@dev",
-    "npm-asset\/clipboard": "1.*"
-  },
-  "autoload": {
-    "psr-4": {
-      "QUI\\Url\\": "src/QUI/Url"
-    }
-  }
 }
