@@ -13,6 +13,7 @@
 
             <primary>id</primary>
             <auto_increment>id</auto_increment>
+            <index>shortened</index>
         </table>
     </global>
 </database>
