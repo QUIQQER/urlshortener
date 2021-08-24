@@ -18,7 +18,7 @@
     "require": {
         "php": ">=5.3",
         "quiqqer\/quiqqer": "*@dev",
-        "npm-asset\/clipboard": "1.*"
+        "quiqqer-asset\/clipboard": "1.*"
     },
     "autoload": {
         "psr-4": {
