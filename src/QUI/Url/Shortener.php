@@ -54,13 +54,13 @@ class Shortener
 
         if (!empty($host)) {
             if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
-                $host = 'https://'.$host;
+                $host = 'https://' . $host;
             }
         } else {
             $host = QUI::getProjectManager()->get()->getVHost(true, true);
         }
 
-        return rtrim($host, '/').'/';
+        return rtrim($host, '/') . '/';
     }
 
     /**
@@ -74,10 +74,10 @@ class Shortener
 
         foreach (QUI::vhosts() as $host => $data) {
             if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
-                $host = 'https://'.$host;
+                $host = 'https://' . $host;
             }
 
-            $hosts[] = rtrim($host, '/').'/';
+            $hosts[] = rtrim($host, '/') . '/';
         }
 
         return $hosts;
@@ -121,7 +121,7 @@ class Shortener
         }
 
         $result = QUI::getDataBase()->fetch(array(
-            'from'  => self::getDataBaseTableName(),
+            'from' => self::getDataBaseTableName(),
             'where' => array(
                 'shortened' => $url
             ),
@@ -136,7 +136,7 @@ class Shortener
         // piwik tracking
         if (class_exists('QUI\Piwik\Piwik') && self::isPiwikTrackingOn()) {
             $Project = $Rewrite->getProject();
-            $Piwik   = QUI\Piwik\Piwik::getPiwikClient($Project);
+            $Piwik = QUI\Piwik\Piwik::getPiwikClient($Project);
 
             $Piwik->setIp(QUI\Utils\System::getClientIP());
             $Piwik->doTrackPageView($url);
@@ -158,7 +158,7 @@ class Shortener
         $url = $result[0]['url'];
 
         if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
-            $url = 'https://'.$url;
+            $url = 'https://' . $url;
         }
 
         // nexgam switch
@@ -204,7 +204,7 @@ class Shortener
         }
 
         $result = QUI::getDataBase()->fetch(array(
-            'from'  => self::getDataBaseTableName(),
+            'from' => self::getDataBaseTableName(),
             'where' => array(
                 'shortened' => $shortened
             ),
@@ -220,10 +220,10 @@ class Shortener
 
         QUI::getDataBase()->insert($this->getDataBaseTableName(), array(
             'shortened' => $shortened,
-            'url'       => $url
+            'url' => $url
         ));
 
-        return rtrim(HOST, '/').URL_DIR.$shortened;
+        return rtrim(HOST, '/') . URL_DIR . $shortened;
     }
 
     /**
@@ -258,7 +258,7 @@ class Shortener
         );
 
         $result = QUI::getDataBase()->fetch(array(
-            'from'  => $this->getDataBaseTableName(),
+            'from' => $this->getDataBaseTableName(),
             'where' => array(
                 'shortened' => $random
             )

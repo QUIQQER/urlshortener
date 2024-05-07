@@ -15,15 +15,15 @@ QUI::$Ajax->registerFunction(
     'package_quiqqer_urlshortener_ajax_list',
     function ($params) {
         $Handler = new QUI\Url\Handler();
-        $Grid    = new QUI\Utils\Grid();
-        $result  = array();
+        $Grid = new QUI\Utils\Grid();
+        $result = array();
 
         $data = $Handler->getChildrenData(
             $Grid->parseDBParams(json_decode($params, true))
         );
 
         $defaultHost = QUI\Url\Shortener::getDefaultHost();
-        $defaultHost = rtrim($defaultHost, '/').'/';
+        $defaultHost = rtrim($defaultHost, '/') . '/';
 
         foreach ($data as $entry) {
             // default host
@@ -32,11 +32,11 @@ QUI::$Ajax->registerFunction(
             }
 
             $result[] = array(
-                'id'        => $entry['id'],
-                'url'       => $entry['url'],
+                'id' => $entry['id'],
+                'url' => $entry['url'],
                 'shortened' => $entry['shortened'],
-                'host'      => rtrim($entry['host'], '/').'/',
-                'count'     => $entry['count']
+                'host' => rtrim($entry['host'], '/') . '/',
+                'count' => $entry['count']
             );
         }
 
