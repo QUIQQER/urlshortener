@@ -16,6 +16,6 @@ QUI::$Ajax->registerFunction(
 
         return $Handler->getChild($urlId)->getAttributes();
     },
-    array('urlId'),
+    ['urlId'],
     'Permission::checkAdminUser'
 );

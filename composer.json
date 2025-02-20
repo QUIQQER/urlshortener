@@ -7,18 +7,18 @@
         {
             "name": "PCSG",
             "email": "support@pcsg.de",
-            "homepage": "http://www.pcsg.de",
+            "homepage": "https://www.pcsg.de",
             "role": "Developer"
         }
     ],
     "support": {
         "email": "support@pcsg.de",
-        "url": "http://www.pcsg.de"
+        "url": "https://www.pcsg.de"
     },
     "require": {
-        "php": ">=5.3",
-        "quiqqer/quiqqer": "*@dev",
-        "quiqqer-asset/clipboard": "1.*"
+        "php": "^8",
+        "quiqqer/core": "^2",
+        "quiqqer-asset/clipboard": "^1"
     },
     "autoload": {
         "psr-4": {

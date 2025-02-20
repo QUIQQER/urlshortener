@@ -19,6 +19,6 @@ QUI::$Ajax->registerFunction(
         $Shortener = new QUI\Url\Shortener();
         $Shortener->deleteUrl($urlIds);
     },
-    array('urlIds'),
+    ['urlIds'],
     'Permission::checkAdminUser'
 );

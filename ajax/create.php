@@ -19,6 +19,6 @@ QUI::$Ajax->registerFunction(
 
         return $Shortener->addUrl($target, $shortened);
     },
-    array('target', 'shortened'),
+    ['target', 'shortened'],
     'Permission::checkAdminUser'
 );
