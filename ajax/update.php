@@ -17,11 +17,11 @@ QUI::$Ajax->registerFunction(
     'package_quiqqer_urlshortener_ajax_update',
     function ($urlId, $params) {
         $Handler = new QUI\Url\Handler();
-        $Url     = $Handler->getChild($urlId);
+        $Url = $Handler->getChild($urlId);
 
         $Url->setAttributes(json_decode($params, true));
         $Url->update();
     },
-    array('urlId', 'params'),
+    ['urlId', 'params'],
     'Permission::checkAdminUser'
 );

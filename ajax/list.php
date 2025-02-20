@@ -16,7 +16,7 @@ QUI::$Ajax->registerFunction(
     function ($params) {
         $Handler = new QUI\Url\Handler();
         $Grid = new QUI\Utils\Grid();
-        $result = array();
+        $result = [];
 
         $data = $Handler->getChildrenData(
             $Grid->parseDBParams(json_decode($params, true))
@@ -31,17 +31,17 @@ QUI::$Ajax->registerFunction(
                 $entry['host'] = $defaultHost;
             }
 
-            $result[] = array(
+            $result[] = [
                 'id' => $entry['id'],
                 'url' => $entry['url'],
                 'shortened' => $entry['shortened'],
                 'host' => rtrim($entry['host'], '/') . '/',
                 'count' => $entry['count']
-            );
+            ];
         }
 
         return $Grid->parseResult($result, $Handler->countChildren());
     },
-    array('params'),
+    ['params'],
     'Permission::checkAdminUser'
 );
