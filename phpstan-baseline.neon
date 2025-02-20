@@ -1,11 +1,2 @@
 parameters:
 	ignoreErrors:
-		-
-			message: "#^Method QUI\\\\Url\\\\Shortener\\:\\:isLocaleTrackingOn\\(\\) should return bool but returns array\\|string\\.$#"
-			count: 1
-			path: src/QUI/Url/Shortener.php
-
-		-
-			message: "#^Method QUI\\\\Url\\\\Shortener\\:\\:isPiwikTrackingOn\\(\\) should return bool but returns array\\|string\\.$#"
-			count: 1
-			path: src/QUI/Url/Shortener.php

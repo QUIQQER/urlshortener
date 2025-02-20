@@ -7,6 +7,7 @@
 namespace QUI\Url;
 
 use QUI;
+use QUI\Database\Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,24 +18,24 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class Shortener
 {
-    protected static $Config = null;
+    protected static QUI\Config | null $Config = null;
 
     /**
      * Return the database table name
      *
      * @return string
      */
-    public static function getDataBaseTableName()
+    public static function getDataBaseTableName(): string
     {
         return QUI::getDBTableName('urlshortener');
     }
 
     /**
-     * Return the shrotener config object
+     * Return the shortener config object
      *
      * @return bool|null|QUI\Config
      */
-    protected static function getConfig()
+    protected static function getConfig(): QUI\Config | bool | null
     {
         if (self::$Config === null) {
             self::$Config = QUI::getPackage('quiqqer/urlshortener')->getConfig();
@@ -48,12 +49,12 @@ class Shortener
      *
      * @return string
      */
-    public static function getDefaultHost()
+    public static function getDefaultHost(): string
     {
         $host = self::getConfig()->get('general', 'host');
 
         if (!empty($host)) {
-            if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
+            if (!str_contains($host, 'https://') && !str_contains($host, 'http://')) {
                 $host = 'https://' . $host;
             }
         } else {
@@ -68,12 +69,12 @@ class Shortener
      *
      * @return array
      */
-    public static function getAvailableHosts()
+    public static function getAvailableHosts(): array
     {
         $hosts = array();
 
         foreach (QUI::vhosts() as $host => $data) {
-            if (strpos($host, 'https://') === false && strpos($host, 'http://') === false) {
+            if (!str_contains($host, 'https://') && !str_contains($host, 'http://')) {
                 $host = 'https://' . $host;
             }
 
@@ -88,7 +89,7 @@ class Shortener
      *
      * @return bool
      */
-    protected static function isLocaleTrackingOn()
+    protected static function isLocaleTrackingOn(): bool
     {
         return self::getConfig()->get('general', 'localeTracking');
     }
@@ -98,7 +99,7 @@ class Shortener
      *
      * @return bool
      */
-    protected static function isPiwikTrackingOn()
+    protected static function isPiwikTrackingOn(): bool
     {
         return self::getConfig()->get('general', 'piwikTracking');
     }
@@ -109,10 +110,10 @@ class Shortener
      * @param QUI\Rewrite $Rewrite
      * @param string $url
      */
-    public static function onRequest($Rewrite, $url)
+    public static function onRequest($Rewrite, $url): void
     {
         // media files are irrelevant
-        if (strpos($url, 'media/cache') !== false) {
+        if (str_contains($url, 'media/cache')) {
             return;
         }
 
@@ -185,12 +186,12 @@ class Shortener
      * Add a new url and return the shorten link
      *
      * @param string $url - target url
-     * @param string|bool $shortened - default = if false = random shortened url
+     * @param bool|string $shortened - default = if false = random shortened url
      * @return string - new url
      *
-     * @throws Exception
+     * @throws Exception|QUI\Database\Exception
      */
-    public function addUrl($url, $shortened = false)
+    public function addUrl(string $url, bool | string $shortened = false): string
     {
         if (!is_string($shortened) || empty($shortened)) {
             $shortened = $this->random();
@@ -230,8 +231,9 @@ class Shortener
      * Delete an url or multiple urls
      *
      * @param integer|array $urlId
+     * @throws Exception
      */
-    public function deleteUrl($urlId)
+    public function deleteUrl(int | array $urlId): void
     {
         if (!is_array($urlId)) {
             $urlId = array($urlId);
@@ -248,8 +250,9 @@ class Shortener
      * Return random shortened
      *
      * @return string
+     * @throws Exception
      */
-    public function random()
+    public function random(): string
     {
         $random = substr(
             str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),

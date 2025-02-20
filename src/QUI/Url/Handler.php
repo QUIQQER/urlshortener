@@ -18,7 +18,7 @@ class Handler extends QUI\CRUD\Factory
     /**
      * @return string
      */
-    public function getDataBaseTableName()
+    public function getDataBaseTableName(): string
     {
         return 'urlshortener';
     }
@@ -26,22 +26,22 @@ class Handler extends QUI\CRUD\Factory
     /**
      * @return array
      */
-    public function getChildAttributes()
+    public function getChildAttributes(): array
     {
-        return array(
+        return [
             'shortened',
             'url',
             'title',
             'description',
             'params',
             'host'
-        );
+        ];
     }
 
     /**
      * @return string
      */
-    public function getChildClass()
+    public function getChildClass(): string
     {
         return 'QUI\Url\Url';
     }
